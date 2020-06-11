@@ -30,3 +30,13 @@ class Product(me.Document):
     in_stock = me.BooleanField(default=True)
     image = me.FileField(required=True)
     category = me.ReferenceField(Category)
+
+
+class Text(me.Document):
+
+    TITLES = {
+        'greetings': 'Текст приветствия',
+        'cart': 'Текст корзины'
+    }
+    title = me.StringField(min_length=1, max_length=256, choices=TITLES.values(), unique=True)
+    body = me.StringField(min_length=1, max_length=4096)
